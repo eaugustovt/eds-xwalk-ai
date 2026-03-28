@@ -16,6 +16,14 @@ Before using the aem-boilerplate, we recommand you to go through the documentati
 Furthremore, we encourage you to watch the recordings of any of our previous presentations or sessions:
 - [Getting started with AEM Authoring and Edge Delivery Services](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/gems2024/aem-authoring-and-edge-delivery)
 
+## AI Skills
+
+This project uses [Adobe EDS Skills](https://github.com/adobe/skills) for GitHub Copilot, installed with:
+
+```sh
+npx skills add https://github.com/adobe/skills/tree/main/skills/aem/edge-delivery-services --agents copilot
+```
+
 ## Prerequisites
 
 - nodejs 18.3.x or newer
