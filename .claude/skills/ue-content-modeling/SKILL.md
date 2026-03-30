@@ -61,7 +61,7 @@ Every block model file (`blocks/{name}/_{name}.json`) has three sections:
 Key fields:
 - `title`: Display name in the UE component picker
 - `id`: Unique identifier (lowercase, used in filters)
-- `resourceType`: Always `core/franklin/components/block/v1/block` for standard blocks
+- `resourceType`: Always `core/franklin/components/block/v1/block` for standard blocks. Exception: structural blocks like columns use `core/franklin/components/columns/v1/columns`
 - `template.name`: Block name as it appears in the HTML (PascalCase)
 - `template.model`: References the model ID from the models section
 
@@ -207,25 +207,7 @@ Checklist:
 
 Create `blocks/{block-name}/_{block-name}.json` with all three sections.
 
-### Step 5: Register in Section Filter
-
-Add the block ID to `models/_section.json` → `filters[0].components` array so authors can add it to sections.
-
-### Step 6: Build
-
-Run `npm run build:json` to merge all model files into the root JSON files:
-- `component-definition.json`
-- `component-models.json`
-- `component-filters.json`
-
-### Step 7: Validate Build
-
-Verify the block appears in all three generated files:
-```bash
-findstr /i "{block-name}" component-definition.json
-findstr /i "{block-name}" component-models.json
-findstr /i "{block-name}" component-filters.json
-```
+**After completing the model design, return control to the calling skill (ue-content-driven-development) which handles the remaining steps: section filter registration, build:json, lint, and PR.**
 
 ## Common Anti-Patterns
 

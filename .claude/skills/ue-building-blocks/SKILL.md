@@ -134,6 +134,7 @@ UE HTML → CSS can style directly?
 }
 
 /* Block-level styles - mobile first */
+/* All selectors scoped to block class — no `main` prefix needed */
 .{block-name} {
   position: relative;
 }

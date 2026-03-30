@@ -34,7 +34,7 @@ Use this skill for ALL xwalk/UE development tasks:
 
 Do NOT use for:
 - Documentation-only changes
-- Changes to `scripts.js`, `delayed.js`, global styles (use building-blocks skill directly)
+- Changes to `scripts.js`, `delayed.js`, global styles (use ue-building-blocks skill directly)
 - Configuration changes unrelated to authoring
 
 ## Two-Phase Workflow
@@ -401,7 +401,7 @@ scripts/scripts.js          # moveInstrumentation() lives here
 
 ### Preview URL Patterns
 ```
-https://main--{repo}--{owner}.aem.page/{path}           # Main preview
-https://{branch}--{repo}--{owner}.aem.page/{path}       # Branch preview
-https://main--{repo}--{owner}.aem.page/{path}.plain.html # Raw HTML output
+https://main--eds-xwalk-ai--eaugustovt.aem.page/{path}           # Main preview
+https://{branch}--eds-xwalk-ai--eaugustovt.aem.page/{path}       # Branch preview
+https://main--eds-xwalk-ai--eaugustovt.aem.page/{path}.plain.html # Raw HTML output
 ```
