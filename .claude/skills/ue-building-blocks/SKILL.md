@@ -7,18 +7,6 @@ description: Guide for implementing block decoration (JS/CSS) in AEM Edge Delive
 
 This skill guides you through implementing the **decoration layer** (JS/CSS) for AEM Edge Delivery blocks in xwalk/Universal Editor projects. In xwalk, the UE generates the HTML from the component model — your code decorates that output.
 
-## Key Difference from Document-Based
-
-In document-based projects, JS must transform table-based HTML into a rich DOM structure. In xwalk, the UE generates well-structured HTML from model fields, so decoration is often **CSS-first with minimal or no JS**.
-
-| Aspect | Document-Based | xwalk/UE |
-|--------|---------------|----------|
-| HTML source | Table rows/columns | UE-generated from model fields |
-| JS role | Heavy DOM transformation | Minimal decoration, sometimes none |
-| CSS role | Style the transformed DOM | Style the UE-generated DOM directly |
-| DOM restructuring | Common and expected | Avoid when possible; use `moveInstrumentation()` if needed |
-| Empty JS file | Unusual | Valid pattern (hero.js is empty!) |
-
 ## Related Skills
 
 - **ue-content-driven-development**: This skill is invoked FROM the UE-CDD Build phase

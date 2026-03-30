@@ -7,17 +7,6 @@ description: Create component models for AEM Edge Delivery Services blocks using
 
 This skill guides you through designing **Universal Editor component models** for AEM Edge Delivery Services blocks. In xwalk projects, the JSON model IS the content contract — it defines what fields authors see in the UE properties panel, and the platform generates HTML from it.
 
-## Key Difference from Document-Based
-
-In document-based projects, the content model is a **table structure** (rows/columns) that authors create in Google Docs or SharePoint. In xwalk/UE, the content model is a **JSON definition** (`_block.json`) with typed fields that the Universal Editor renders as a form.
-
-| Aspect | Document-Based | xwalk/UE |
-|--------|---------------|----------|
-| Contract | Table structure | `_block.json` (JSON model) |
-| Author interface | Doc/Sheet table | UE properties panel |
-| HTML generation | Backend parses table | Backend renders from model fields |
-| Field types | Implicit (formatting) | Explicit (text, richtext, reference, select, etc.) |
-
 ## Related Skills
 
 - **ue-content-driven-development**: This skill is invoked FROM the UE-CDD skill during the Model phase

@@ -99,14 +99,14 @@ with `site:www.aem.live` to restrict web search results)
 - Always include `.js` file extensions in imports
 - Use Unix line endings (LF)
 
-**For detailed JavaScript guidelines:** Use the **building-blocks** skill which includes comprehensive decoration patterns and best practices.
+**For detailed JavaScript guidelines:** Use the **ue-building-blocks** skill which includes CSS-first decoration patterns and best practices for xwalk/UE projects.
 
 ### CSS
 - Mobile-first responsive design (breakpoints: 600px/900px/1200px)
 - All selectors scoped to blocks: `.{blockName} .selector`
 - Follow Stylelint standard configuration
 
-**For detailed CSS guidelines:** Use the **building-blocks** skill which includes comprehensive styling patterns and best practices.
+**For detailed CSS guidelines:** Use the **ue-building-blocks** skill which includes styling patterns and best practices.
 
 ### HTML
 - Use semantic HTML5 elements
@@ -121,9 +121,8 @@ CMS authored content is a key part of every AEM Website. The content of a page
 is broken into sections. Sections can have default content (text, headings,
 links, etc.) as well as content in blocks.
 
-**For development workflow:** Use the **content-driven-development** skill for all development
-tasks. This skill ensures you identify or create test content before writing code,
-following AEM best practices.
+**For development workflow:** Use the **ue-content-driven-development** skill for all development
+tasks. This skill orchestrates the two-phase workflow (Model → Build) for xwalk/UE projects.
 
 **Quick tips:**
 - Inspect page structure: `curl http://localhost:3000/path/to/page`
@@ -140,11 +139,10 @@ transforms the HTML using DOM APIs to render a final structure.
 developers. Design this structure before writing any code, and be careful when
 making changes that could break existing pages.
 
-**For creating or modifying blocks:** Use the **building-blocks** skill which guides you
+**For creating or modifying blocks:** Use the **ue-building-blocks** skill which guides you
 through:
-- Content model design (via content-driven-development)
-- JavaScript decoration patterns
-- CSS styling conventions
+- CSS-first decoration of UE-generated HTML
+- Minimal JavaScript with `moveInstrumentation()`
 - Testing and validation
 
 **Tip:** Use `curl http://localhost:3000/path/to/page` to inspect the HTML delivered by
@@ -170,9 +168,9 @@ performance penalty when loaded earlier
 
 ## Development Workflow
 
-**For all development tasks:** Use the **content-driven-development** skill which orchestrates the complete workflow:
-1. Content discovery and modeling
-2. Implementation (invokes building-blocks skill for blocks)
+**For all development tasks:** Use the **ue-content-driven-development** skill which orchestrates the complete workflow:
+1. Model phase (JSON contract + PR)
+2. Build phase (CSS/JS decoration from UE-generated HTML)
 3. Validation and testing (invokes testing-blocks skill)
 
 ### Local Development
@@ -241,14 +239,14 @@ comprehensive guidance on testing before opening a PR.
 ## Common Tasks
 
 ### Adding New Blocks
-Use the **content-driven-development** skill which will guide you through:
-1. Content modeling and test content creation
-2. Block implementation (via building-blocks skill)
+Use the **ue-content-driven-development** skill which will guide you through:
+1. JSON model creation (via ue-content-modeling skill)
+2. Block decoration (via ue-building-blocks skill)
 3. Testing and validation (via testing-blocks skill)
 
 ### Modifying Existing Blocks
-Use the **content-driven-development** skill to ensure you have test content, then follow the building-blocks skill
-for implementation.
+Use the **ue-content-driven-development** skill — start at Phase 1 if changing the model,
+or Phase 2 if only changing decoration (JS/CSS).
 
 ### Global Style Changes
 1. Modify files in the `styles/` directory
