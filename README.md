@@ -1,19 +1,20 @@
-# Your Project's Title...
-Your project's description...
+# EDS xwalk AI
+
+AEM Edge Delivery Services project using **xwalk/Universal Editor** authoring.
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: https://main--eds-xwalk-ai--eaugustovt.aem.page/
+- Live: https://main--eds-xwalk-ai--eaugustovt.aem.live/
 
 ## Documentation
 
-Before using the aem-boilerplate, we recommand you to go through the documentation on [www.aem.live](https://www.aem.live/docs/) and [experienceleague.adobe.com](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/authoring), more specifically:
+Before using the aem-boilerplate, we recommend you to go through the documentation on [www.aem.live](https://www.aem.live/docs/) and [experienceleague.adobe.com](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/authoring), more specifically:
 1. [Getting Started](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/edge-dev-getting-started), [Creating Blocks](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/create-block), [Content Modelling](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/content-modeling)
 2. [The Anatomy of a Project](https://www.aem.live/developer/anatomy-of-a-project)
 3. [Web Performance](https://www.aem.live/developer/keeping-it-100)
 4. [Markup, Sections, Blocks, and Auto Blocking](https://www.aem.live/developer/markup-sections-blocks)
 
-Furthremore, we encourage you to watch the recordings of any of our previous presentations or sessions:
+Furthermore, we encourage you to watch the recordings of any of our previous presentations or sessions:
 - [Getting started with AEM Authoring and Edge Delivery Services](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/gems2024/aem-authoring-and-edge-delivery)
 
 ## AI Coding Agents
@@ -24,12 +25,13 @@ This project supports AI coding agents using [Adobe EDS Skills](https://github.c
 
 | Path | Purpose |
 |---|---|
+| `.github/copilot-instructions.md` | Instructions for GitHub Copilot |
 | `CLAUDE.md` | Instructions for Claude Code |
-| `AGENTS.md` | Instructions for other agents (Copilot, Cursor, etc.) |
-| `.claude/skills/` | Adobe EDS skills (source of truth) |
+| `AGENTS.md` | Instructions for other agents (Cursor, etc.) |
+| `.claude/skills/` | Adobe EDS skills + custom xwalk skills |
 | `.agents/discover-skills` | Script to list available skills |
 
-### Installing Skills
+### Installing Adobe Skills
 
 Skills are installed via [npx skills](https://github.com/vercel-labs/skills) from the [adobe/skills](https://github.com/adobe/skills) repository:
 
@@ -52,12 +54,22 @@ npx skills add https://github.com/adobe/skills/tree/main/skills/aem/edge-deliver
 
 ### Key Skills
 
+This is a **xwalk/Universal Editor** project. Use the `ue-*` skills as primary entry points:
+
 | Skill | Description |
 |---|---|
-| `content-driven-development` | Start here for ALL code changes — orchestrates the full workflow |
-| `building-blocks` | Block implementation (JS decoration, CSS styling) |
+| `ue-content-driven-development` | **Start here** — orchestrates Model phase (JSON) + Build phase (JS/CSS) |
+| `ue-content-modeling` | Create `_block.json` models for the Universal Editor |
+| `ue-building-blocks` | CSS-first decoration of UE-generated HTML |
+
+The document-based skills are also available for reference:
+
+| Skill | Description |
+|---|---|
+| `content-driven-development` | Document-based CDD workflow |
+| `building-blocks` | Document-based block implementation |
+| `content-modeling` | Document-based content modeling |
 | `testing-blocks` | Browser testing and validation |
-| `content-modeling` | Design author-friendly content models |
 | `docs-search` | Search aem.live documentation |
 | `block-collection-and-party` | Find reference implementations |
 | `page-import` | Import/migrate webpages to AEM EDS |
@@ -83,8 +95,22 @@ npm run lint
 
 ## Local development
 
-1. Create a new repository based on the `aem-boilerplate` template
-1. Add the [AEM Code Sync GitHub App](https://github.com/apps/aem-code-sync) to the repository
 1. Install the [AEM CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/aem-cli`
-1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000`)
-1. Open the `{repo}` directory in your favorite IDE and start coding :)
+1. Start AEM Proxy: `aem up --no-open` (opens at `http://localhost:3000`)
+1. Open the project in your favorite IDE and start coding :)
+
+### Component Models
+
+Blocks use JSON component models for the Universal Editor:
+
+```sh
+# After creating/modifying blocks/{name}/_{name}.json
+npm run build:json
+```
+
+This merges all model files into:
+- `component-definition.json`
+- `component-models.json`
+- `component-filters.json`
+
+**Do not edit the root `component-*.json` files directly.**
