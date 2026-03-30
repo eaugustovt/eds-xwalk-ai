@@ -59,6 +59,36 @@ moveInstrumentation(originalElement, newElement);
 - `.js` extensions required in imports
 - Indent: 2 spaces (JS/JSON), 4 spaces (CSS)
 
+## eslint-plugin-xwalk Rules (Component Models)
+
+All rules are **errors** — violations fail CI. Applied to generated `component-*.json` files.
+
+### Max 4 cells per block (`xwalk/max-cells`)
+- Each field = 1 cell, but **collapsible pairs** count as 1:
+  - `{name}` + `{name}Alt` (e.g., `image` + `imageAlt`)
+  - `{name}` + `{name}Text` (e.g., `link` + `linkText`)
+  - `{name}` + `{name}Title`, `{name}Type`, `{name}MimeType`
+- Fields with `_` prefix groups count as 1 (e.g., `item_1`, `item_2`)
+
+### No orphan collapsible fields (`xwalk/no-orphan-collapsible-fields`)
+- Suffix fields (`imageAlt`, `linkText`, etc.) require their base field (`image`, `link`)
+- **Wrong:** `ctaText` without `cta` → use `link` + `linkText` instead
+
+### Field naming (`xwalk/invalid-field-name`)
+- Start with letter, allow `a-zA-Z0-9_-:`, max one `_`, max one `:`
+
+### No duplicates (`xwalk/no-duplicate-fields`)
+
+### Approved resource types only (`xwalk/no-custom-resource-types`)
+- Must start with `core/franklin/components/`, `fd/franklin/components/`, or `core/fd/components/form/`
+
+### Standard naming conventions for collapsible pairs
+| Content | Fields | Components |
+|---------|--------|------------|
+| Image | `image` + `imageAlt` | `reference` + `text` |
+| Link/CTA | `link` + `linkText` | `aem-content` + `text` |
+| Video | `video` + `videoAlt` | `reference` + `text` |
+
 ## Important Files
 
 - `scripts/aem.js` — NEVER modify

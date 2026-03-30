@@ -198,9 +198,91 @@ Create `blocks/{block-name}/_{block-name}.json` with all three sections.
 
 **After completing the model design, return control to the calling skill (ue-content-driven-development) which handles the remaining steps: section filter registration, build:json, lint, and PR.**
 
+## eslint-plugin-xwalk Rules (MUST FOLLOW)
+
+The project uses `eslint-plugin-xwalk` with the `recommended` preset. All rules are **errors** — violations will fail CI/CD. These rules validate the **generated** `component-models.json` and `component-definition.json` files.
+
+### Rule 1: `xwalk/max-cells` — Max 4 cells per block
+
+Each block model produces table cells. The default limit is **4 cells**.
+
+**How cells are counted:**
+- Each field = 1 cell, EXCEPT:
+- **Collapsible pairs** count as 1 cell (two fields → one cell):
+  - `{name}` + `{name}Alt` (e.g., `image` + `imageAlt`)
+  - `{name}` + `{name}Text` (e.g., `link` + `linkText`)
+  - `{name}` + `{name}Title`
+  - `{name}` + `{name}Type`
+  - `{name}` + `{name}MimeType`
+- **Grouped fields** with `_` prefix count as 1 group (e.g., `image_1`, `image_2` → 1 cell)
+- Non-multi `container` fields are flattened (their children count individually)
+- Models ending in `-metadata` are exempt
+- Models used only by `key-value: true` definitions are exempt
+
+**Example (4 cells):**
+```
+image + imageAlt  → 1 cell (collapsible pair)
+title             → 1 cell
+description       → 1 cell
+link + linkText   → 1 cell (collapsible pair)
+Total: 4 cells ✓ (6 fields, but 2 pairs collapse)
+```
+
+### Rule 2: `xwalk/no-orphan-collapsible-fields` — Suffix fields need their base
+
+If a field name ends with a collapsible suffix, the base field MUST also exist:
+
+| Suffix field | Requires base field |
+|---|---|
+| `{name}Alt` | `{name}` |
+| `{name}Text` | `{name}` |
+| `{name}Title` | `{name}` |
+| `{name}Type` | `{name}` |
+| `{name}MimeType` | `{name}` |
+
+**Wrong:** `imageAlt` without `image` → orphan error
+**Wrong:** `ctaText` without `cta` → orphan (use `link` + `linkText` instead)
+**Right:** `image` + `imageAlt` → valid pair
+
+### Rule 3: `xwalk/no-duplicate-fields` — Unique field names
+
+All field `name` values within a model (including inside containers) must be unique.
+
+### Rule 4: `xwalk/invalid-field-name` — Naming constraints
+
+- Must start with a letter
+- Allowed characters: `a-z`, `A-Z`, `0-9`, `_`, `-`, `:`
+- Maximum **one** `_` character
+- Maximum **one** `:` character
+- Must not be empty
+
+### Rule 5: `xwalk/no-custom-resource-types` — Approved resource types only
+
+`resourceType` in definitions must start with one of:
+- `core/franklin/components/`
+- `fd/franklin/components/`
+- `core/fd/components/form/`
+
+Custom resource types are not allowed.
+
+### Standard Field Naming Conventions
+
+Use these names to benefit from collapsible pairs and keep cell count low:
+
+| Content | Field names | Component types |
+|---------|------------|----------------|
+| Image | `image` + `imageAlt` | `reference` + `text` |
+| Link/CTA | `link` + `linkText` | `aem-content` + `text` |
+| Video | `video` + `videoAlt` | `reference` + `text` |
+| Icon | `icon` + `iconAlt` | `reference` + `text` |
+
+⚠️ **Never use arbitrary prefixes** like `cta`, `background`, `hero` before collapsible suffixes — only recognized base+suffix pairs collapse.
+
 ## Common Anti-Patterns
 
 - **Too many fields**: Keep it simple — fewer fields = better author experience
+- **Exceeding 4 cells**: Use collapsible pairs and `richtext` to pack more content into fewer cells
+- **Orphan suffix fields**: Don't use `ctaText`, `backgroundAlt` — use `linkText`, `imageAlt`
 - **Using `text` for rich content**: Use `richtext` when authors need formatting
 - **Missing `imageAlt`**: Always pair `reference` image fields with an alt text field
 - **Hardcoding values**: Use `select`/`multiselect` for predefined options
