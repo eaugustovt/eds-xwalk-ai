@@ -18,10 +18,10 @@ Furthremore, we encourage you to watch the recordings of any of our previous pre
 
 ## AI Skills
 
-This project uses [Adobe EDS Skills](https://github.com/adobe/skills) for GitHub Copilot and Claude Code, installed with:
+This project uses [Adobe EDS Skills](https://github.com/adobe/skills) for Claude Code, installed with:
 
 ```sh
-npx skills add https://github.com/adobe/skills/tree/main/skills/aem/edge-delivery-services --skill '*' -a github-copilot -a claude-code -y
+npx skills add https://github.com/adobe/skills/tree/main/skills/aem/edge-delivery-services --skill '*' -a claude-code -y
 ```
 
 ## Prerequisites
