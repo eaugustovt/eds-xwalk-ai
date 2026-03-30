@@ -7,17 +7,23 @@ easy-to-author, and maintainable web experiences.
 
 ## Skills
 
-**For ALL development work involving blocks, core scripts, or functionality, you
-MUST start with the content-driven-development skill.** It will orchestrate other skills as needed
-throughout the development workflow.
+**This is a xwalk/Universal Editor project.** The content contract is defined by
+JSON component models (`blocks/{name}/_{name}.json`), NOT document-based tables.
 
-Two skills serve as primary entry points for common workflows:
+Three xwalk-specific skills serve as primary entry points:
 
-**content-driven-development** - Start here for ALL code changes including: new blocks, block modifications,
-CSS styling, bug fixes, core functionality (scripts.js, styles.css, delayed.js),
-auto-blocking changes, or any JavaScript/CSS work. This skill orchestrates the
-complete development workflow from content modeling through implementation and
-testing.
+**ue-content-driven-development** - Start here for ALL block development. Orchestrates a
+two-phase workflow: (1) Model phase — define JSON model, PR to main, author creates
+content in UE; (2) Build phase — fetch UE-generated HTML, implement CSS/JS decoration, PR.
+
+**ue-content-modeling** - Invoked by ue-content-driven-development during the Model phase.
+Guides creation of `_{block}.json` files with definitions, models, and filters.
+
+**ue-building-blocks** - Invoked by ue-content-driven-development during the Build phase.
+Guides CSS-first decoration of UE-generated HTML, with minimal JS and `moveInstrumentation()`.
+
+The document-based skills (content-driven-development, building-blocks, content-modeling)
+are also available but designed for document-based authoring projects.
 
 **page-import** - Start here when importing or migrating webpages from any URL to AEM Edge
 Delivery Services. This skill orchestrates the complete import workflow including
@@ -59,8 +65,19 @@ with `site:www.aem.live` to restrict web search results)
 ```
 ├── blocks/          # Reusable content blocks
     └── {blockName}/   - Individual block directory
-        ├── {blockName}.js      # Block's JavaScript
+        ├── _{blockName}.json   # UE component model (definitions, models, filters)
+        ├── {blockName}.js      # Block's JavaScript (decoration)
         └── {blockName}.css     # Block's styles
+├── models/          # Shared component model files
+    ├── _component-definition.json  # Merge template for definitions
+    ├── _component-models.json      # Merge template for models
+    ├── _component-filters.json     # Merge template for filters
+    ├── _section.json               # Section model + filter (register blocks here)
+    ├── _page.json                  # Page metadata model
+    └── _{name}.json                # Default content component models
+├── component-definition.json  # Generated - DO NOT EDIT (use npm run build:json)
+├── component-models.json      # Generated - DO NOT EDIT (use npm run build:json)
+├── component-filters.json     # Generated - DO NOT EDIT (use npm run build:json)
 ├── styles/          # Global styles and CSS
     ├── styles.css          # Minimal global styling and layout for your website required for LCP
     └── lazy-styles.css     # Additional global styling and layout for below the fold/post LCP content

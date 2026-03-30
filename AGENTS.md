@@ -59,9 +59,17 @@ Skills will be added to `.claude/skills/` as needed for this project.
 Check the `.claude/skills/` directory or run `./.agents/discover-skills` for
 the current list of available skills.
 
-**For ALL development work involving blocks, core scripts, or functionality, you
-MUST start with the content-driven-development skill.** It will orchestrate other skills as needed throughout the
-development workflow.
+**This is a xwalk/Universal Editor project.** The content contract is defined by
+JSON component models (`blocks/{name}/_{name}.json`), NOT document-based tables.
+
+**For ALL development work involving blocks, you MUST start with the
+ue-content-driven-development skill.** It orchestrates a two-phase workflow:
+1. **Model phase**: Define the JSON model → PR to main → author creates content in UE
+2. **Build phase**: Fetch UE-generated HTML → CSS/JS decoration → PR
+
+The document-based skills (content-driven-development, building-blocks, content-modeling)
+are available but designed for document-based authoring. For this project, prefer
+the `ue-*` prefixed skills.
 
 ## Project Overview
 
@@ -94,8 +102,19 @@ with `site:www.aem.live` to restrict web search results)
 ```
 ├── blocks/          # Reusable content blocks
     └── {blockName}/   - Individual block directory
-        ├── {blockName}.js      # Block's JavaScript
+        ├── _{blockName}.json   # UE component model (definitions, models, filters)
+        ├── {blockName}.js      # Block's JavaScript (decoration)
         └── {blockName}.css     # Block's styles
+├── models/          # Shared component model files
+    ├── _component-definition.json  # Merge template for definitions
+    ├── _component-models.json      # Merge template for models
+    ├── _component-filters.json     # Merge template for filters
+    ├── _section.json               # Section model + filter (register blocks here)
+    ├── _page.json                  # Page metadata model
+    └── _{name}.json                # Default content component models
+├── component-definition.json  # Generated - DO NOT EDIT (use npm run build:json)
+├── component-models.json      # Generated - DO NOT EDIT (use npm run build:json)
+├── component-filters.json     # Generated - DO NOT EDIT (use npm run build:json)
 ├── styles/          # Global styles and CSS
     ├── styles.css          # Minimal global styling and layout for your website required for LCP
     └── lazy-styles.css     # Additional global styling and layout for below the fold/post LCP content
