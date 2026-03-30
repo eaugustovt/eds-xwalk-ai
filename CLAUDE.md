@@ -280,6 +280,7 @@ repositories.
 When implementing something new or unfamiliar, consult these repositories for patterns:
 
 - [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — xwalk boilerplate (this project's base), reference for component models, block patterns, and editor-support
+- [adobe/aem-block-collection](https://github.com/adobe/aem-block-collection) — Official block library (accordion, carousel, modal, tabs, etc.), live examples at `https://main--aem-block-collection--adobe.aem.live`
 - [adobe/helix-website](https://github.com/adobe/helix-website) — Adobe's own EDS site, reference for skills structure, agent setup, and advanced block implementations
 - [adobe/skills](https://github.com/adobe/skills) — Adobe EDS skills repository, source of document-based skills installed in this project
 

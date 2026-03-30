@@ -232,5 +232,6 @@ Reference existing blocks in this project for patterns:
 When designing models for unfamiliar block types, consult:
 
 - [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — Reference for standard component models and patterns
+- [adobe/aem-block-collection](https://github.com/adobe/aem-block-collection) — Official block library with JS/CSS patterns to understand expected HTML structure
 - [Content Modelling (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/content-modeling) — Official UE content modeling guide
 - [Creating Blocks (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/create-block) — Official UE block creation guide

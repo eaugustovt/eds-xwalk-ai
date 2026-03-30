@@ -305,5 +305,6 @@ From this project:
 When implementing unfamiliar patterns, consult:
 
 - [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — Reference block implementations (hero, cards, columns)
+- [adobe/aem-block-collection](https://github.com/adobe/aem-block-collection) — Official block library (accordion, carousel, modal, tabs, etc.)
 - [adobe/helix-website](https://github.com/adobe/helix-website) — Advanced block decoration patterns
 - [UE Developer Tutorial](https://www.aem.live/developer/ue-tutorial) — Block decoration guidance for xwalk/UE

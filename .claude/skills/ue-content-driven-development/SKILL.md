@@ -412,6 +412,7 @@ When implementing something unfamiliar, consult:
 
 **Repositories:**
 - [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — xwalk boilerplate, reference for component models and block patterns
+- [adobe/aem-block-collection](https://github.com/adobe/aem-block-collection) — Official block library with live examples at `https://main--aem-block-collection--adobe.aem.live`
 - [adobe/helix-website](https://github.com/adobe/helix-website) — Adobe's own EDS site, advanced block implementations
 
 **Documentation:**

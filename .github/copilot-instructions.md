@@ -78,6 +78,7 @@ When implementing something new, consult these references:
 
 ### Repositories
 - [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — xwalk boilerplate (this project's base)
+- [adobe/aem-block-collection](https://github.com/adobe/aem-block-collection) — Official block library (accordion, carousel, modal, tabs, etc.)
 - [adobe/helix-website](https://github.com/adobe/helix-website) — Adobe's own EDS site
 - [adobe/skills](https://github.com/adobe/skills) — Adobe EDS skills
 
