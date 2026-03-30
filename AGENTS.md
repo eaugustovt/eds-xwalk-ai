@@ -312,9 +312,21 @@ feature information, implementation guidance, and best practices.
 blocks, patterns, and code examples from the Block Collection and Block Party
 repositories.
 
-**Key documentation resources:**
-- [Developer Tutorial](https://www.aem.live/developer/tutorial)
+### Reference Repositories
+
+When implementing something new or unfamiliar, consult these repositories for patterns:
+
+- [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — xwalk boilerplate (this project's base), reference for component models, block patterns, and editor-support
+- [adobe/helix-website](https://github.com/adobe/helix-website) — Adobe's own EDS site, reference for skills structure, agent setup, and advanced block implementations
+- [adobe/skills](https://github.com/adobe/skills) — Adobe EDS skills repository, source of document-based skills installed in this project
+
+### Key Documentation
+
+- [UE Developer Tutorial](https://www.aem.live/developer/ue-tutorial) — **Start here** for xwalk/UE development guidance
+- [Developer Tutorial](https://www.aem.live/developer/tutorial) — General EDS developer tutorial
 - [The Anatomy of a Project](https://www.aem.live/developer/anatomy-of-a-project)
+- [Content Modelling (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/content-modeling) — UE-specific content modeling guide
+- [Creating Blocks (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/create-block) — UE-specific block creation
 - [David's Model](https://www.aem.live/docs/davidsmodel)
 
 **Manual search:** `site:www.aem.live` when searching the web
@@ -330,7 +342,7 @@ repositories.
 ## Contributing
 
 - Follow the existing code style and patterns (see Code Style Guidelines above)
-- Use the **content-driven-development** skill for all development tasks
+- Use the **ue-content-driven-development** skill for all block development tasks
 - Use the **testing-blocks** skill before opening any PR
 - Ensure all linting passes: `npm run lint`
 - Update documentation for significant changes

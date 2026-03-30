@@ -299,3 +299,11 @@ From this project:
 - **Assuming table structure**: xwalk HTML is NOT the same as document-based table HTML
 - **Inline styles**: Use CSS classes and custom properties instead
 - **Non-scoped selectors**: ALL selectors must be scoped to `.{block-name}`
+
+## Reference Sources
+
+When implementing unfamiliar patterns, consult:
+
+- [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — Reference block implementations (hero, cards, columns)
+- [adobe/helix-website](https://github.com/adobe/helix-website) — Advanced block decoration patterns
+- [UE Developer Tutorial](https://www.aem.live/developer/ue-tutorial) — Block decoration guidance for xwalk/UE

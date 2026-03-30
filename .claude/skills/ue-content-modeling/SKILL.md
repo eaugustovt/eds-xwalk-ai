@@ -226,3 +226,11 @@ Reference existing blocks in this project for patterns:
 - `blocks/columns/_columns.json` — Structural block (config + nested filter)
 - `blocks/fragment/_fragment.json` — Single-field block (aem-content reference)
 - `models/_section.json` — Section model with style multiselect and component filter
+
+### External References
+
+When designing models for unfamiliar block types, consult:
+
+- [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — Reference for standard component models and patterns
+- [Content Modelling (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/content-modeling) — Official UE content modeling guide
+- [Creating Blocks (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/create-block) — Official UE block creation guide

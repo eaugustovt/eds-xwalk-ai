@@ -71,3 +71,18 @@ moveInstrumentation(originalElement, newElement);
 - `npm run build:json` — Merge model JSONs
 - `npm run lint` / `npm run lint:fix` — Lint all
 - `aem up --no-open` — Start dev server
+
+## Reference Sources
+
+When implementing something new, consult these references:
+
+### Repositories
+- [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — xwalk boilerplate (this project's base)
+- [adobe/helix-website](https://github.com/adobe/helix-website) — Adobe's own EDS site
+- [adobe/skills](https://github.com/adobe/skills) — Adobe EDS skills
+
+### Documentation
+- [UE Developer Tutorial](https://www.aem.live/developer/ue-tutorial) — Primary xwalk/UE guide
+- [Developer Tutorial](https://www.aem.live/developer/tutorial) — General EDS tutorial
+- [Content Modelling (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/content-modeling)
+- [Creating Blocks (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/create-block)

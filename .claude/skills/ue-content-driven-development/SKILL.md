@@ -405,3 +405,16 @@ https://main--eds-xwalk-ai--eaugustovt.aem.page/{path}           # Main preview
 https://{branch}--eds-xwalk-ai--eaugustovt.aem.page/{path}       # Branch preview
 https://main--eds-xwalk-ai--eaugustovt.aem.page/{path}.plain.html # Raw HTML output
 ```
+
+### Reference Sources
+
+When implementing something unfamiliar, consult:
+
+**Repositories:**
+- [adobe-rnd/aem-boilerplate-xwalk](https://github.com/adobe-rnd/aem-boilerplate-xwalk) — xwalk boilerplate, reference for component models and block patterns
+- [adobe/helix-website](https://github.com/adobe/helix-website) — Adobe's own EDS site, advanced block implementations
+
+**Documentation:**
+- [UE Developer Tutorial](https://www.aem.live/developer/ue-tutorial) — Start here for xwalk/UE development
+- [Content Modelling (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/content-modeling)
+- [Creating Blocks (UE)](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/edge-delivery/wysiwyg-authoring/create-block)
