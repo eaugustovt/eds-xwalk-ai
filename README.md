@@ -16,13 +16,53 @@ Before using the aem-boilerplate, we recommand you to go through the documentati
 Furthremore, we encourage you to watch the recordings of any of our previous presentations or sessions:
 - [Getting started with AEM Authoring and Edge Delivery Services](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/gems2024/aem-authoring-and-edge-delivery)
 
-## AI Skills
+## AI Coding Agents
 
-This project uses [Adobe EDS Skills](https://github.com/adobe/skills) for Claude Code, installed with:
+This project supports AI coding agents using [Adobe EDS Skills](https://github.com/adobe/skills) following the same pattern as [adobe/helix-website](https://github.com/adobe/helix-website).
+
+### Project Structure
+
+| Path | Purpose |
+|---|---|
+| `CLAUDE.md` | Instructions for Claude Code |
+| `AGENTS.md` | Instructions for other agents (Copilot, Cursor, etc.) |
+| `.claude/skills/` | Adobe EDS skills (source of truth) |
+| `.agents/discover-skills` | Script to list available skills |
+
+### Installing Skills
+
+Skills are installed via [npx skills](https://github.com/vercel-labs/skills) from the [adobe/skills](https://github.com/adobe/skills) repository:
 
 ```sh
+# Install all AEM EDS skills for Claude Code
 npx skills add https://github.com/adobe/skills/tree/main/skills/aem/edge-delivery-services --skill '*' -a claude-code -y
 ```
+
+To install for additional agents (e.g., Copilot, Cursor):
+
+```sh
+npx skills add https://github.com/adobe/skills/tree/main/skills/aem/edge-delivery-services --skill '*' -a claude-code -a github-copilot -y
+```
+
+### Discovering Skills
+
+```sh
+./.agents/discover-skills
+```
+
+### Key Skills
+
+| Skill | Description |
+|---|---|
+| `content-driven-development` | Start here for ALL code changes — orchestrates the full workflow |
+| `building-blocks` | Block implementation (JS decoration, CSS styling) |
+| `testing-blocks` | Browser testing and validation |
+| `content-modeling` | Design author-friendly content models |
+| `docs-search` | Search aem.live documentation |
+| `block-collection-and-party` | Find reference implementations |
+| `page-import` | Import/migrate webpages to AEM EDS |
+
+For more details, see the [Adobe Skills repository](https://github.com/adobe/skills) and [AI Coding Agents guide](https://www.aem.live/developer/ai-coding-agents).
 
 ## Prerequisites
 
