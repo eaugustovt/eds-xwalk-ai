@@ -64,10 +64,47 @@ This project is an **AEM Edge Delivery Services (Universal Editor/xwalk)** site:
   }
   ```
 
-### 4. Updating the Design System
+### 4. Syncing DESIGN.md from Stitch (Automated)
+
+When implementing or updating the design system, the agent must:
+
+1. Call `mcp_stitch_list_design_systems` with the project ID:
+   ```json
+   { "projectId": "11436279411532343242" }
+   ```
+2. Call `mcp_stitch_get_project` or `mcp_stitch_list_design_systems` to get the design system ID.
+3. Extract the `designMd` field from the response.
+4. Overwrite `.stitch/DESIGN.md` with the content of `designMd`.
+5. Extract all tokens from the response and overwrite `styles/tokens.css` as CSS custom properties.
+
+> Always fetch the latest design system from Stitch before implementing. Never manually edit `styles/tokens.css` or `.stitch/DESIGN.md` — always sync from Stitch.
+
+### 5. Downloading Fonts Locally
+
+After syncing tokens, download all fonts referenced in the design system to the repository (no external CDN links):
+
+1. Identify fonts from the design system (e.g., `font-display: 'Manrope'`, `font-body: 'Inter'`).
+2. Download `.woff2` files for each font weight used (regular, medium/semibold, bold) from a trusted source (e.g., `fonts.gstatic.com`).
+3. Save files to `fonts/` following the naming convention: `{fontname}-{weight}.woff2` (lowercase, e.g., `inter-regular.woff2`, `manrope-bold.woff2`).
+4. Add `@font-face` declarations to `styles/fonts.css` for each font/weight, following the existing pattern in the file.
+5. Remove any external Google Fonts `<link>` tags from `head.html` — all fonts must be self-hosted.
+
+### 6. Updating styles.css with Design Tokens
+
+After syncing tokens and fonts:
+
+1. Replace hardcoded color values in `styles/styles.css` with `var(--token-name)` references from `styles/tokens.css`.
+2. Replace hardcoded font families with `var(--font-display)` and `var(--font-body)`.
+3. Replace hardcoded font sizes with `var(--font-size-*)` tokens where available.
+4. Update `@font-face` fallback font names in `styles/styles.css` to match the new fonts.
+5. Ensure `@import url('tokens.css')` is present at the top of `styles/styles.css`.
+6. Run `npm run lint:fix` after all changes to auto-fix CSS issues.
+
+### 7. Updating the Design System
 - When the design system changes in Stitch:
-  1. Re-export tokens and overwrite `styles/tokens.css`.
-  2. Update `.stitch/DESIGN.md` as needed.
+  1. Repeat workflows 4, 5, and 6 above.
+  2. Re-download fonts only if typography changed.
+  3. Always run `npm run lint` to validate after updates.
 
 ---
 
