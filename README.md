@@ -2,6 +2,56 @@
 
 AEM Edge Delivery Services project using **xwalk/Universal Editor** authoring.
 
+## Stitch Skills & Stitch Docs
+
+This project supports integration with [Google Stitch](https://stitch.withgoogle.com/docs/) for design system management, tokens, and visual automation, using Stitch Skills.
+
+### Stitch Documentation
+
+- [Stitch Docs](https://stitch.withgoogle.com/docs/)
+- [stitch-skills (GitHub)](https://github.com/google-labs-code/stitch-skills)
+
+
+### Installing Stitch Skills
+
+Stitch skills can be installed via [npx skills](https://github.com/vercel-labs/skills):
+
+```sh
+# Install Stitch skills (recommended set)
+npx skills add google-labs-code/stitch-skills --skill design-md
+npx skills add google-labs-code/stitch-skills --skill enhance-prompt
+npx skills add google-labs-code/stitch-skills --skill remotion
+npx skills add google-labs-code/stitch-skills --skill stitch-design
+npx skills add google-labs-code/stitch-skills --skill stitch-loop
+```
+
+Refer to the [official Stitch documentation](https://stitch.withgoogle.com/docs/) for MCP configuration, authentication, and usage examples for available methods (e.g., list_projects, get_project, list_screens, etc).
+
+
+### Using Stitch Skills
+
+- To list Stitch projects:
+  - Use the `list_projects` skill as described in the MCP documentation.
+- To import tokens or design system:
+  - Use the `stitch-design`, `remotion`, or `design-md` skills as needed for your workflow.
+- To enhance prompts for design generation:
+  - Use the `enhance-prompt` skill.
+- To automate design workflows or iterative design:
+  - Use the `stitch-loop` skill.
+
+**Tip:** Always check the Stitch documentation for the latest MCP payloads, supported methods, and skill usage examples.
+
+### Environment Variables
+
+This project uses a `.env` file to securely store your Stitch API key and other secrets. Example:
+
+```env
+# .env
+STITCH_API_KEY=your-stitch-api-key-here
+```
+
+Make sure `.env` is listed in `.gitignore` to avoid committing secrets.
+
 ## Environments
 - Preview: https://main--eds-xwalk-ai--eaugustovt.aem.page/
 - Live: https://main--eds-xwalk-ai--eaugustovt.aem.live/
