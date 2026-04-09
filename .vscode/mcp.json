@@ -7,6 +7,17 @@
         "Accept": "application/json",
         "X-Goog-Api-Key": "${env:STITCH_API_KEY}"
       }
+    },
+    "figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "figma-developer-mcp",
+        "--stdio"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "${env:FIGMA_API_KEY}"
+      }
     }
   }
 }
